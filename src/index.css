@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --fs-display: clamp(2.25rem, 4vw + 0.5rem, 3.0rem);
+    --fs-h1: clamp(1.75rem, 2.5vw + 0.5rem, 2.625rem);
+    --fs-h2: clamp(1.5rem, 2vw + 0.5rem, 2.0rem);
+    --fs-h3: clamp(1.25rem, 1.5vw + 0.5rem, 1.5rem);
+    --fs-body: 1rem; /* 16px */
+    --fs-caption: 0.875rem; /* 14px */
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: system-ui, sans-serif;
+    color: #000000; /* primary color as default text */
+    background-color: #ffffff; /* secondary color as default background */
+    line-height: 1.6;
+  }
+
+  .h-display {
+    font-size: var(--fs-display);
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  .h1 {
+    font-size: var(--fs-h1);
+    line-height: 1.2;
+    font-weight: 800;
+  }
+
+  .h2 {
+    font-size: var(--fs-h2);
+    line-height: 1.25;
+    font-weight: 700;
+  }
+
+  .h3 {
+    font-size: var(--fs-h3);
+    line-height: 1.3;
+    font-weight: 600;
+  }
+
+  .text-body {
+    font-size: var(--fs-body);
+    line-height: 1.7;
+  }
+
+  .text-caption {
+    font-size: var(--fs-caption);
+    line-height: 1.5;
+  }
+
+  .text-muted {
+    opacity: .8;
+  }
+
+  .container {
+    max-width: 1120px;
+    padding-inline: 1rem;
+    margin-inline: auto;
+  }
+
+  .section {
+    padding-block: clamp(48px, 6vw, 72px);
+  }
+
+  /* Custom scrollbar for gallery thumbnails on product detail */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+}
