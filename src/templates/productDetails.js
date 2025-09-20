@@ -253,27 +253,35 @@ const colorMap = {
   Green: "green",
   Desert: "desert",
   Natural: "natural",
+  Black: "black",
 };
 
 // Function to get phone by model + color
 export function getPhoneByModelAndColor(model, color) {
-  const phone = phones.find(
-    (p) => p.model.toLowerCase() === model.toLowerCase()
-  );
-  if (!phone) return { error: `Phone model '${model}' not found.` };
+  try {
+    const phone = phones.find(
+      (p) => p.model.toLowerCase() === model.toLowerCase()
+    );
+    if (!phone) return { error: `Phone model '${model}' not found.` };
 
-  const modelPrefix = modelMap[phone.model];
-  const colorSuffix = colorMap[color];
+    const modelPrefix = modelMap[phone.model];
+    const colorSuffix = colorMap[color];
 
-  if (!modelPrefix) return { error: `Model prefix not found for '${model}'.` };
-  if (!colorSuffix) return { error: `Color '${color}' not mapped.` };
+    console.log(color);
 
-  const imageUrl = `${baseUrl}${modelPrefix}${colorSuffix}.webp`;
+    if (!modelPrefix)
+      return { error: `Model prefix not found for '${model}'.` };
+    if (!colorSuffix) return { error: `Color '${color}' not mapped.` };
 
-  return {
-    ...phone,
-    selectedColor: color,
-    image: imageUrl,
-    gallery: [imageUrl, RotateImage], // only selected color image
-  };
+    const imageUrl = `${baseUrl}${modelPrefix}${colorSuffix}.webp`;
+
+    return {
+      ...phone,
+      selectedColor: color,
+      image: imageUrl,
+      gallery: [imageUrl, RotateImage], // only selected color image
+    };
+  } catch (error) {
+    console.log(erro);
+  }
 }
